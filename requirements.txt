@@ -1,2 +1,2 @@
-pytest==7.4.0
-selene==2.0.0rc4
+selene~=2.0.0rc4
+pytest~=7.4.0
