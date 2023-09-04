@@ -1,5 +1,5 @@
-from qa_guru_python_07_10.data import users
-from qa_guru_python_07_10.pages.registration_page import RegistrationPage
+from qa_guru_python_07_12.data import users
+from qa_guru_python_07_12.pages.registration_page import RegistrationPage
 
 
 def test_successful_student_registration_form():
