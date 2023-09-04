@@ -33,13 +33,11 @@ def setup_browser():
     attach.add_logs(browser)
     attach.add_video(browser)
 
+    browser.quit()
+
 
 @pytest.fixture(scope='function', autouse=True)
 def open_new_browser(setup_browser):
     browser.config.base_url = 'https://demoqa.com'
     browser.config.window_width = 1400
     browser.config.window_height = 2800
-
-    yield
-
-    browser.quit()
