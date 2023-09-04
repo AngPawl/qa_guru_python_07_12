@@ -5,17 +5,6 @@ from selene.support import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture(scope='function', autouse=True)
-def open_new_browser():
-    browser.config.base_url = 'https://demoqa.com'
-    browser.config.window_width = 1400
-    browser.config.window_height = 2800
-
-    yield
-
-    browser.quit()
-
-
 @pytest.fixture(scope='function')
 def setup_browser(request):
     browser_version = "100.0"
@@ -35,3 +24,15 @@ def setup_browser(request):
     )
 
     browser = Browser(Config(driver))
+
+    yield browser
+
+@pytest.fixture(scope='function', autouse=True)
+def open_new_browser(setup_browser):
+    browser.config.base_url = 'https://demoqa.com'
+    browser.config.window_width = 1400
+    browser.config.window_height = 2800
+
+    yield
+
+    browser.quit()
