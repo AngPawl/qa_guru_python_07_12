@@ -1,7 +1,7 @@
 import pytest
 
 from selene import browser, Config, Browser
-from selene.support import webdriver
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
@@ -23,9 +23,10 @@ def setup_browser(request):
         options=options
     )
 
-    browser = Browser(Config(driver))
+    browser.config.driver = driver
 
     yield browser
+
 
 @pytest.fixture(scope='function', autouse=True)
 def open_new_browser(setup_browser):
